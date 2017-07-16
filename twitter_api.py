@@ -30,7 +30,7 @@ for i in range(0, len(json_keys)):
         cell = found_tweets[i]._json[header]
         record.append(cell)
     writer.writerow(record)
-    record = []
+    record.clear()
 
 # print(len(found_tweets), type(found_tweets))
 # print(json_keys, type(json_keys))
