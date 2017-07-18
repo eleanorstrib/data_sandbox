@@ -1,4 +1,4 @@
-support_accounts =  {
+accounts =  {
 'TMobile': {
 'industry': 'telecommunications',
 'handle': '@TMobileHelp',
@@ -36,6 +36,3 @@ support_accounts =  {
 'handle': '@AmericanAir',
 },
 }
-
-print(type(support_accounts))
-print(support_accounts['Nike']['handle'])
