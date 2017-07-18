@@ -18,8 +18,11 @@ api = twitter.Api(consumer_key=TWITTER_API_KEY,
 def get_tweets(api, accounts):
     for k, v in accounts.items():
         print("getting data for %s...", k)
-        tweets = api.GetSearch(term=v['handle'], count=100)
-        create_csv(company, tweets)
+        try:
+            tweets = api.GetSearch(term=v['handle'], count=100)
+        except:
+            print("There was a problem getting the Tweets :(")
+        create_csv(k, tweets)
     return True
 
 def create_csv(company, tweets):
@@ -30,11 +33,10 @@ def create_csv(company, tweets):
     record = []
     for i in range(0, len(json_keys)):
         for header in json_keys:
-            cell = found_tweets[i]._json[header]
+            cell = tweets[i]._json[header]
             record.append(cell)
         writer.writerow(record)
         record.clear()
-    writer.close()
 
 
 if __name__ == '__main__':
