@@ -33,7 +33,10 @@ def create_csv(company, tweets):
     record = []
     for i in range(0, len(json_keys)):
         for header in json_keys:
-            cell = tweets[i]._json[header]
+            try:
+                cell = tweets[i]._json[header]
+            except:
+                cell = 'no data'
             record.append(cell)
         writer.writerow(record)
         record.clear()
